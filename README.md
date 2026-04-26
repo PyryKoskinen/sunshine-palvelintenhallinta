@@ -1,3 +1,3 @@
 # sunshine-palvelintenhallinta
 sunshinesunshinesunshine
-sunshine tehtävä repo
+sunshine tehtävää repo
