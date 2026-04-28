@@ -1,4 +1,5 @@
-- group:
+- name: Varmista sudoless ryhmä
+  group:
     name: "sudoless"
     state: present
 

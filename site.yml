@@ -1,7 +1,8 @@
 - hosts: all
+  connection: local
   become: true
   roles:
-    # antero
-    # world
-    # nginx
+    -  antero
+    #  world
+    #  nginx
     - mariadb
