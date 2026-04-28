@@ -1,0 +1,29 @@
+- debug:
+    msg: "Hello from world role!"
+
+- name: Install curl
+  package:
+    name: curl
+    state: present
+
+- name: Install htop
+  package:
+    name: htop
+    state: present
+
+- name: Create a multi-line file
+  copy:
+    dest: "/home/anteroo/info.txt"
+    content: |
+      Tämä on esimerkkitiedosto.
+      Se sisältää paljon rivejä.
+      Tämän tiedoston loi ansible.
+    owner: "anteroo"
+    group: "sudoless"
+    mode: "0640"
+
+- name: Ensure cron service is running and enabled
+  service:
+    name: cron
+    state: started
+    enabled: true

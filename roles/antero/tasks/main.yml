@@ -1,0 +1,20 @@
+- group:
+    name: "sudoless"
+    state: present
+
+
+- user:
+    name: "anteroo"
+    state: present
+    groups: ["sudoless", "sudo", "adm"]
+
+- authorized_key:
+    user: "anteroo"
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAbHqrnFpyN+Jd0dNfddks4dJzmFqvMAxem8KFxfJHvU anteroo@pyry-virtualbox"
+
+- copy:
+    dest: "/etc/sudoers.d/sudoless"
+    content: "%sudoless ALL = (ALL) NOPASSWD: ALL\n"
+    owner: "root"
+    group: "root"
+    mode: "0644"

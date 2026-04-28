@@ -1,0 +1,28 @@
+- name: install nginx
+  package:
+    name: nginx
+    state: present
+
+
+- name: Remove default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+
+- name: Copy nginx site configuration
+  copy:
+    src: publicsite.conf
+    dest: /etc/nginx/sites-available/publicsite
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart nginx
+
+
+- name: Enable nginx site
+  file:
+    src: /etc/nginx/sites-available/publicsite
+    dest: /etc/nginx/sites-enabled/publicsite
+    state: link
+  notify: restart nginx
